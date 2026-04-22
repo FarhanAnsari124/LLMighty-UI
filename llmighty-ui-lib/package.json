@@ -1,0 +1,26 @@
+{
+  "name": "llmighty-ui-lib",
+  "version": "1.0.2",
+  "description": "LLmighty-UI React Component Library",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "keywords": [],
+  "author": "Farhan Ansari",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.5"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  }
+}
