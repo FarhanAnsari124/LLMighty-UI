@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setUserData } from './redux/userSlice'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Generate from './pages/Generate'
 
 export const ServerUrl = "http://localhost:8000"
 
@@ -36,6 +37,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/generate" element={<Generate />} />
     </Routes>
   )
 }

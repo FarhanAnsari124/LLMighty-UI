@@ -6,7 +6,7 @@ import { fadeUp, FONTS, V } from "../constants/tokens";
 
 const NPMSection = () => {
   const [copied, setCopied] = useState(false);
-  const CMD = "npm install llmightyui";
+  const CMD = "npm install llmighty-ui-lib";
 
   const copy = () => {
     navigator.clipboard.writeText(CMD);
