@@ -9,9 +9,11 @@ import NPMSection from "../components/NPMSection";
 import { CTABanner, Footer } from "../components/CTAAndFooter";
 import Auth from "../components/Auth";
 import { FONTS } from "../constants/tokens";
+import { useSelector } from "react-redux";
 
 export default function HomePage() {
   const [authOpen, setAuthOpen] = useState(false);
+  const {userData} = useSelector((state)=>state.user)
   const open = () => setAuthOpen(true);
   const close = () => setAuthOpen(false);
 
@@ -36,7 +38,7 @@ export default function HomePage() {
       <CTABanner onLogin={open} />
       <Footer />
 
-      <AnimatePresence>{authOpen && <Auth onClose={close} />}</AnimatePresence>
+      <AnimatePresence>{authOpen && <Auth onClose={()=>setAuthOpen(false)} />}</AnimatePresence>
     </div>
   );
 }
