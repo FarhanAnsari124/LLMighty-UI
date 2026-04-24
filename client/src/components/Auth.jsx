@@ -89,14 +89,14 @@ const Auth = ({ onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 flex items-center justify-center bg-black/90 backdrop-blur-xl z-50 p-4"
+        className="fixed inset-0 flex items-start sm:items-center justify-center bg-black/90 backdrop-blur-xl z-50 p-4 pt-6 overflow-y-auto"
       >
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           exit={{ scale: 0.95, y: 24, opacity: 0 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row w-full max-w-195 max-h-[90vh] overflow-y-auto rounded-4xl border border-white/6 bg-[#050505] shadow-[0_80px_160px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.04)] relative overflow-hidden"
+          className="flex flex-col sm:flex-row w-full max-w-[780px] rounded-3xl border border-white/[0.06] bg-[#050505] shadow-[0_80px_160px_rgba(0,0,0,1),inset_0_1px_0_rgba(255,255,255,0.04)] relative overflow-hidden"
         >
           <button
             onClick={onClose}
@@ -104,7 +104,7 @@ const Auth = ({ onClose }) => {
           >
             <TbX size={13} />
           </button>
-          <div className="sm:w-[54%] bg-[#070707] p-8 sm:p-11 relative overflow-hidden flex flex-col">
+          <div className="sm:w-[54%] bg-[#070707] p-6 sm:p-11 relative overflow-hidden flex flex-col">
             <div className="absolute -top-24 -left-12 w-96 h-96 rounded-full bg-[radial-gradient(circle,rgba(124,106,247,0.07)_0%,transparent_65%)] pointer-events-none" />
 
             <motion.div
@@ -128,10 +128,10 @@ const Auth = ({ onClose }) => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.22 }}
-              className="mb-9 sm:mb-11"
+              className="mb-5 sm:mb-11"
             >
               <h2
-                className="text-[30px] sm:text-[36px] font-bold text-[#F5F5F7] leading-[1.1] tracking-[-1.5px] mb-3"
+                className="text-[24px] sm:text-[36px] font-bold text-[#F5F5F7] leading-[1.1] tracking-[-1.5px] mb-2"
                 style={{ fontFamily: "'Syne',sans-serif" }}
               >
                 Build UI.
@@ -225,7 +225,7 @@ const Auth = ({ onClose }) => {
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.28, duration: 0.55 }}
-            className="sm:w-[46%] bg-[#050505] px-8 sm:px-10 py-9 sm:py-12 flex flex-col justify-center items-center relative overflow-hidden"
+            className="sm:w-[46%] bg-[#050505] px-6 sm:px-10 py-7 sm:py-12 flex flex-col justify-center items-center relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-size-[30px_30px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-72 h-72 rounded-full bg-[radial-gradient(circle,rgba(124,106,247,0.055)_0%,transparent_65%)] pointer-events-none" />
