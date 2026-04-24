@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   TbSparkles,
@@ -9,9 +9,10 @@ import {
   TbCode,
 } from "react-icons/tb";
 import { HERO_CYCLE_WORDS } from "../constants/data";
+import { useSelector } from "react-redux";
 import { FONTS } from "../constants/tokens";
 import { TypingText, FakePricingCard } from "./HeroWidgets";
-
+import {useNavigate} from 'react-router-dom'
 const PROMPT_TEXT =
   'A glassmorphic pricing card with monthly/yearly toggle, gradient border, and a highlighted "Pro" tier.';
 
@@ -19,6 +20,9 @@ const Hero = ({ onLogin }) => {
   const [wordIdx, setWordIdx] = useState(0);
   const [copied, setCopied] = useState(false);
   const NPM_CMD = "npm install llmightyui";
+
+  const { userData } = useSelector((state) => state.user);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const t = setInterval(
@@ -32,6 +36,20 @@ const Hero = ({ onLogin }) => {
     navigator.clipboard.writeText(NPM_CMD);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+  const handleGenerateClick = ()=>{
+    if(userData){
+      navigate("/generate")
+    }else{
+      onLogin();
+    }
+  }
+  const handleViewComponents = () => {
+    if (userData) {
+      navigate("/components");
+    } else {
+      onLogin();
+    }
   };
 
   return (
@@ -94,7 +112,7 @@ const Hero = ({ onLogin }) => {
           className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8"
         >
           <motion.button
-            onClick={onLogin}
+            onClick={handleGenerateClick}
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 bg-[#7C6AF7] text-white text-[13.5px] font-semibold px-7 py-3.5 rounded-2xl cursor-pointer border-none shadow-[0_0_40px_rgba(124,106,247,0.35)] hover:shadow-[0_0_60px_rgba(124,106,247,0.55)] transition-all"
@@ -102,6 +120,7 @@ const Hero = ({ onLogin }) => {
             <TbSparkles size={16} /> Start generating free
           </motion.button>
           <motion.button
+            onClick={handleViewComponents}
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 bg-white/[0.04] text-[#F5F5F7] text-[13.5px] font-semibold px-7 py-3.5 rounded-2xl cursor-pointer border border-white/[0.08] hover:bg-white/[0.07] transition-all"

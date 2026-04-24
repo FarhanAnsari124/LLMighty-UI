@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { TbSparkles, TbBrandGithub, TbBrandTwitter } from "react-icons/tb";
+import { TbSparkles, TbBrandGithub, TbBrandLinkedin } from "react-icons/tb";
 import { fadeUp, FONTS } from "../constants/tokens";
 
 export const CTABanner = ({ onLogin }) => (
@@ -73,15 +73,15 @@ export const Footer = () => (
 
       <div className="flex items-center gap-3">
         <a
-          href="https://twitter.com"
+          href="https://www.linkedin.com/in/mohd-farhan-ansari-596101314/"
           target="_blank"
           rel="noreferrer"
           className="text-[#3A3A3C] hover:text-[#86868B] transition-colors"
         >
-          <TbBrandTwitter size={16} />
+          <TbBrandLinkedin size={16} />
         </a>
         <a
-          href="https://github.com"
+          href="https://github.com/FarhanAnsari124"
           target="_blank"
           rel="noreferrer"
           className="text-[#3A3A3C] hover:text-[#86868B] transition-colors"
