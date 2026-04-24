@@ -19,7 +19,7 @@ const PROMPT_TEXT =
 const Hero = ({ onLogin }) => {
   const [wordIdx, setWordIdx] = useState(0);
   const [copied, setCopied] = useState(false);
-  const NPM_CMD = "npm install llmightyui";
+  const NPM_CMD = "npm install llmighty-ui-lib";
 
   const { userData } = useSelector((state) => state.user);
   const navigate = useNavigate(); 

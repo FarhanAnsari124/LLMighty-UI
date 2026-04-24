@@ -173,12 +173,12 @@ const UserMenu = ({ userData, onLogout={handleLogout} }) => {
         .slice(0, 2)
         .toUpperCase()
     : (userData?.email?.[0]?.toUpperCase() ?? "U");
-
+  const navigate = useNavigate();
   const menuItems = [
     {
       icon: TbComponents,
       label: "My Components",
-      action: () => {},
+      action: () => {navigate('/components')},
       danger: false,
     },
     { icon: TbLogout, label: "Sign out", action: onLogout, danger: true },
