@@ -1,16 +1,42 @@
-import React,{useState} from 'react'
-import Auth from '../components/Auth'
+import React, { useState } from "react";
+import { AnimatePresence } from "motion/react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Stats from "../components/Stats";
+import Features from "../components/Features";
+import Components from "../components/Components";
+import NPMSection from "../components/NPMSection";
+import { CTABanner, Footer } from "../components/CTAAndFooter";
+import Auth from "../components/Auth";
+import { FONTS } from "../constants/tokens";
 
-const Home = () => {
-    const [showAuth, setShowAuth] = useState(false);
+export default function HomePage() {
+  const [authOpen, setAuthOpen] = useState(false);
+  const open = () => setAuthOpen(true);
+  const close = () => setAuthOpen(false);
+
   return (
-    <div className=''>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={() => setShowAuth(true)}>
-            
-        </button>
-        {showAuth && <Auth onClose={() => setShowAuth(false)} />}
-    </div>
-  )
-}
+    <div
+      className="min-h-screen bg-[#050505] text-[#F5F5F7] overflow-x-hidden"
+      style={{ fontFamily: FONTS.body }}
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        * { box-sizing: border-box; }
+      `}</style>
 
-export default Home
+      <Navbar onLogin={open} />
+      <Hero onLogin={open} />
+      <Stats />
+      <Features />
+      <Components />
+      <NPMSection />
+      <CTABanner onLogin={open} />
+      <Footer />
+
+      <AnimatePresence>{authOpen && <Auth onClose={close} />}</AnimatePresence>
+    </div>
+  );
+}

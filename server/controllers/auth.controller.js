@@ -1,3 +1,5 @@
+import User from '../models/user.model.js'
+import { generateToken } from '../configs/token.js'
 
 
 export const googleAuth = async (req, res) => {
@@ -13,7 +15,7 @@ export const googleAuth = async (req, res) => {
             user = await User.create({ name, email });
         }
         let token = await generateToken(user._id);
-        response.cookie("token", token, {
+        res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", 
             sameSite: "strict",
