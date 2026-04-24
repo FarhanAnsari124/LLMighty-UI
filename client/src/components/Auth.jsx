@@ -15,6 +15,8 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/firebase";
 import axios from "axios";
 import { ServerUrl } from "../App";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../redux/userSlice";
 const steps = [
   {
     icon: TbLogin2,
@@ -53,6 +55,7 @@ const caps = [
 
 const Auth = ({ onClose }) => {
   const [active, setActive] = useState(0);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,7 +77,8 @@ const Auth = ({ onClose }) => {
         { name, email },
         { withCredentials: true },
       );
-      console.log(result.data);
+      dispatch(setUserData(result.data))
+      onClose();
     } catch (error) {
       console.error("Google sign-in error:", error);
     }
