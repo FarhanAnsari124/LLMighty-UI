@@ -20,27 +20,17 @@ export const saveComponent = async (req, res) => {
       }
     }
     if (user.role !== "admin") {
-      const existing = await Component.findOne({
-        name,
-        owner: req.userId,
-      });
+      const existing = await Component.findOne({ name, owner: req.userId });
       if (existing) {
         return res.status(400).json({
           message: "You already have a component with this name",
         });
       }
     }
-    const component = await Component.create({
-      name,
-      code,
-      props,
-      owner: req.userId,
-    });
+    const component = await Component.create({ name, code, props, owner: req.userId });
     return res.status(200).json(component);
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: `failed to save component ${error}` });
+    return res.status(500).json({ message: `failed to save component ${error}` });
   }
 };
 
@@ -48,27 +38,20 @@ export const publishComponent = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
     if (!user || user.role !== "admin") {
-      return res.status(403).json({
-        message: "Only admin can publish",
-      });
+      return res.status(403).json({ message: "Only admin can publish" });
     }
     const { componentId } = req.body;
     const component = await Component.findById(componentId);
     if (!component) {
-      return res.status(403).json({
-        message: "Component not found",
-      });
+      return res.status(404).json({ message: "Component not found" });
     }
-    if (component.owner.toString() != req.body.toString()) {
-      return res.status(403).json({
-        message: "You can only publish your own components",
-      });
+    if (component.owner.toString() !== req.userId.toString()) {
+      return res.status(403).json({ message: "You can only publish your own components" });
     }
-    const libPath = path.join(process.cwd(), "../llmighty-ui-lib");
-
-    const componentDir = path.join(libPath, "src/components", component.name);
+    const libPath       = path.join(process.cwd(), "../llmighty-ui-lib");
+    const componentDir  = path.join(libPath, "src/components", component.name);
     const componentFile = path.join(componentDir, `${component.name}.jsx`);
-    const indexFile = path.join(libPath, "src/index.js");
+    const indexFile     = path.join(libPath, "src/index.js");
 
     if (!fs.existsSync(componentDir)) {
       fs.mkdirSync(componentDir, { recursive: true });
@@ -76,47 +59,69 @@ export const publishComponent = async (req, res) => {
     fs.writeFileSync(componentFile, component.code);
 
     let indexContent = fs.readFileSync(indexFile, "utf-8");
-
-    const exportLine = `export { ${component.name} } from "./component/${component.name}/${component.name}.jsx";`;
-
+    const exportLine = `export { ${component.name} } from "./components/${component.name}/${component.name}.jsx";`;
     if (!indexContent.includes(exportLine)) {
       fs.appendFileSync(indexFile, `\n${exportLine}\n`);
     }
+
     console.log("Cleaning old build...");
-
     const distPath = path.join(libPath, "dist");
-
     if (fs.existsSync(distPath)) {
       fs.rmSync(distPath, { recursive: true, force: true });
     }
+
     console.log("Building Library...");
+    execSync("npm run build", { cwd: libPath, stdio: "inherit" });
 
-    execSync("npm run build", {
-      cwd: libPath,
-      stdio: "inherit",
-    });
+    console.log("Updating Version...");
+    execSync("npm version patch --no-git-tag-version", { cwd: libPath, stdio: "inherit" });
 
-    console.log("Updating Version");
-    execSync("npm version patch --no-git-tag-version", {
-      cwd: libPath,
-      stdio: "inherit",
-    });
+    console.log("Publishing to npm...");
+    execSync("npm publish --access public", { cwd: libPath, stdio: "inherit" });
 
-    console.log("Publishing to npm");
-    execSync("npm publish --access public", {
-      cwd: libPath,
-      stdio: "inherit",
-    });
     component.visibility = "public";
     component.npmPackage = "llmighty-ui-lib";
-
     await component.save();
 
-    return res
-      .status(200)
-      .json({ message: "Component published successfully" });
+    return res.status(200).json({ message: "Component published successfully" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Component published error" });
+  }
+};
+
+export const getMyComponents = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const components = await Component.find({ owner: req.userId }).sort({ createdAt: -1 });
+    return res.status(200).json(components);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteComponent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const component = await Component.findById(id);
+    if (!component) {
+      return res.status(404).json({ message: "Component not found" });
+    }
+    if (component.owner.toString() !== req.userId.toString()) {
+      return res.status(403).json({ message: "You can only delete your own components" });
+    }
+    await Component.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Component deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
   }
 };
