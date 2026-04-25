@@ -20,7 +20,7 @@ const BackButton = ({ to = -1 }) => {
         <TbArrowLeft size={13} />
       </div>
       <span className="text-[12.5px] font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-        {label}
+        Back
       </span>
     </motion.button>
   );
