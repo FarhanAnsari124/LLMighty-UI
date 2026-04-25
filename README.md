@@ -227,7 +227,7 @@ Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
 
 <div align="center">
 
-Built with ☕ by **[Farhan Ansari](https://github.com/farhanansari)**
+Built with ☕ by **[Farhan Ansari](https://github.com/FarhanAnsari124)**
 
 If this project helped you, please consider giving it a ⭐ — it keeps the project alive!
 
