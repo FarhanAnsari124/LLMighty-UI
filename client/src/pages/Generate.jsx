@@ -20,7 +20,7 @@ import {
   TbRocket,
 } from "react-icons/tb";
 import { setUserData } from "../redux/userSlice";
-import BackButton from "../components/BackButton";
+import Backbutton from "../components/Backbutton";
 import { ServerUrl } from "../App";
 
 const SUGGESTIONS = [
