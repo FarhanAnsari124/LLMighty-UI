@@ -137,7 +137,7 @@ export default function Components() {
 
       <div className="relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 pt-16 pb-24">
         <div className="mb-8">
-          <BackButton />
+          <Backbutton />
         </div>
 
         <PageHeader count={components.length} />
