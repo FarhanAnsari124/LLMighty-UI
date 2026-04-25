@@ -26,7 +26,11 @@ app.use(cors({
 app.use(express.json())
 app.use(cookieParser())
 app.get('/', (req, res) => {
-  res.send('Hello, World!')
+   res.json({
+    name: "LLMighty UI API",
+    version: "1.0.0",
+    status: "running",
+  });
 })
 app.use('/api/auth',authRouter)
 app.use('/api/user', userRouter)
