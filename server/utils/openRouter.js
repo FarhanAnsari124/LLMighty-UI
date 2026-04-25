@@ -15,7 +15,7 @@ export const askAI = async (message) => {
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer":"http://localhost:5173",
+          "HTTP-Referer":process.env.CLIENT_URL || "http://localhost:5173",
           "X-Title": "LLMightyUI",
           "Content-Type": "application/json",
         },

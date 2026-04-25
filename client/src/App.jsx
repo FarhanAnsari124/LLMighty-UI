@@ -9,7 +9,7 @@ import Generate from "./pages/Generate";
 import Components from "./pages/Components";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-export const ServerUrl = import.meta.env.VITE_SERVER_URL;
+export const ServerUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000"
 
 const App = () => {
   const dispatch = useDispatch();

@@ -72,12 +72,16 @@ const Auth = ({ onClose }) => {
       let name = User.displayName;
       let email = User.email;
 
-      const result = await axios.post(
+      await axios.post(
         `${ServerUrl}/api/auth/google`,
         { name, email },
         { withCredentials: true },
       );
-      dispatch(setUserData(result.data))
+      const userRes = await axios.get(
+        `${ServerUrl}/api/user/current-user`,
+        { withCredentials: true }
+      );
+      dispatch(setUserData(userRes.data.user))
       onClose();
     } catch (error) {
       console.error("Google sign-in error:", error);
