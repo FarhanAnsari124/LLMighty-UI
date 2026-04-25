@@ -1,71 +1,141 @@
 <div align="center">
 
-# ⚡ LLMighty UI
+<img src="https://img.shields.io/badge/Beta-Live-6ee7b7?style=flat-square&labelColor=0a0a0a" />
+&nbsp;
+<img src="https://img.shields.io/npm/v/llmighty-ui-lib?color=818cf8&style=flat-square&label=npm" />
+&nbsp;
+<img src="https://img.shields.io/npm/dm/llmighty-ui-lib?color=fb7185&style=flat-square&label=downloads" />
+&nbsp;
+<img src="https://img.shields.io/github/license/farhanansari/llmighty-ui?color=6ee7b7&style=flat-square" />
+&nbsp;
+<img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" />
 
-### AI-Powered React Component Library & SaaS Platform
+<br /><br />
 
-[![npm version](https://img.shields.io/npm/v/llmighty-ui-lib?color=6ee7b7&style=flat-square)](https://www.npmjs.com/package/llmighty-ui-lib)
-[![npm downloads](https://img.shields.io/npm/dm/llmighty-ui-lib?color=818cf8&style=flat-square)](https://www.npmjs.com/package/llmighty-ui-lib)
-[![license](https://img.shields.io/github/license/farhanansari/llmighty-ui?color=fb7185&style=flat-square)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](./CONTRIBUTING.md)
+# ⚡ LLMightyUI
 
-**Use production-ready components — or generate entirely new ones with a single AI prompt.**
+### Generate Beautiful UI Components with AI
 
-[Documentation](#) · [Live Demo](#) · [NPM Package](#) · [Report a Bug](../../issues)
+**Describe what you need. LLMightyUI generates production-ready JSX components,  
+customisable in real time, export-ready in seconds.**
+
+[🚀 Start Generating Free](https://llmighty-ui.vercel.app/)&nbsp;·&nbsp; [📦 NPM Package](https://www.npmjs.com/package/llmighty-ui-lib) &nbsp;·&nbsp; [📖 Docs](https://www.npmjs.com/package/llmighty-ui-lib) &nbsp;·&nbsp; [🐛 Report Bug](../../issues)
+
+<br />
 
 </div>
 
 ---
 
-## Overview
+## ✨ What is LLMightyUI?
 
-LLMighty UI is a dual-mode React UI solution. It ships as a standard npm library of pre-built, customizable components, and layers an AI generation engine on top — so developers can describe any UI in plain English and receive a ready-to-use React component instantly.
+LLMightyUI is a **dual-mode React UI solution** — a production-ready component library *and* an AI-powered component generation studio, all in one. Developers can install pre-built components via npm or simply describe any UI in plain English and receive a complete, copy-paste-ready React component instantly.
 
-Built on a full MERN stack with subscription-based access, LLMighty UI is designed to be the last component toolkit you'll reach for.
+Built on the MERN stack with subscription-based access, LLMightyUI is designed to be the last component toolkit you'll ever reach for.
 
 ---
 
-## Features
+## 🖼️ Screenshots
+
+### Landing Page — Hero
+> Generate production-ready JSX components, customisable in real time.
+
+![LLMightyUI Landing Page](https://github.com/FarhanAnsari124/LLMighty-UI/blob/24ee21aa389d0e05edc6d8d0baa0b5f484d5987c/screenshots/Screenshot%202026-04-25%20183121.png)
+
+---
+
+### Sign In — Welcome Back
+> AI-powered components, live customisation, and instant export — engineered for speed.  
+> New users get **150 free credits** on sign-in.
+
+![LLMightyUI Login Modal](https://github.com/FarhanAnsari124/LLMighty-UI/blob/24ee21aa389d0e05edc6d8d0baa0b5f484d5987c/screenshots/Screenshot%202026-04-25%20183147.png)
+
+---
+
+### AI Component Studio
+> Describe your React component in plain English. Preview, save, and publish — all in one place.
+
+![LLMightyUI AI Studio](https://github.com/FarhanAnsari124/LLMighty-UI/blob/24ee21aa389d0e05edc6d8d0baa0b5f484d5987c/screenshots/Screenshot%202026-04-25%20183247.png)
+
+---
+
+### My Library — Saved Components
+> All your AI-generated components in one place. Preview, copy, or delete anytime.
+
+![LLMightyUI Saved Library](https://github.com/FarhanAnsari124/LLMighty-UI/blob/24ee21aa389d0e05edc6d8d0baa0b5f484d5987c/screenshots/Screenshot%202026-04-25%20183222.png)
+
+---
+
+## 🌊 User Flow
+
+```
+1. Sign In (Google OAuth)
+        │
+        ▼
+2. Receive 150 Free Credits
+        │
+        ▼
+3. AI Component Studio
+   └── Describe your component in plain English
+   └── Click "Generate" (or press Enter)
+   └── Live preview renders instantly
+        │
+        ▼
+4. Review & Export
+   └── Preview rendered component
+   └── Copy JSX code
+   └── Save to My Library
+        │
+        ▼
+5. My Library
+   └── Browse all saved components
+   └── Search by name
+   └── Preview / Copy / Delete anytime
+```
+
+---
+
+## 🧩 Features
 
 | Feature | Description |
 |---|---|
-| 🧩 **Component Library** | Production-ready React components, installable via npm |
-| 🤖 **AI Generation** | Prompt-to-component via OpenRouter API — no design skills needed |
+| 🤖 **AI Generation** | Describe any UI in plain English — receive a production-ready JSX component instantly |
+| ⚡ **Live Preview** | See your component rendered in real time, right in the browser |
+| 📚 **My Library** | Save, search, preview, and manage all your generated components |
+| 💾 **JSX Export** | Copy clean, export-ready code with a single click |
+| 🎛️ **Prop Tuning** | Every generated component is customisable via props — no CSS overrides needed |
+| 🧩 **Component Library** | Pre-built, production-ready React components installable via `npm` |
 | 💳 **SaaS Subscriptions** | Razorpay-powered billing for tiered access plans |
-| 🔐 **Auth System** | Full user authentication and session management |
-| 🎨 **Prop-based Theming** | Every component is customizable via props — no CSS overrides |
+| 🔐 **Auth System** | Full user authentication and session management via Google OAuth |
 | 📦 **NPM Ready** | Packaged with `tsup` for ESM/CJS dual output |
 
 ---
 
-## Tech Stack
+## 🚀 Getting Started
 
-**Frontend**
-- React.js — component development and playground UI
+### Option A — Use the AI Studio (Recommended)
 
-**Backend**
-- Node.js + Express.js — REST API and AI proxy layer
-- MongoDB — user data, component metadata, and usage logs
+1. Visit [LLMightyUI](#) and click **"Start Generating Free"**
+2. Sign in with Google — you'll receive **150 free credits**
+3. Describe your component in the AI Component Studio
+4. Preview, copy, and export your JSX — done!
 
-**Integrations**
-- [OpenRouter API](https://openrouter.ai) — AI model routing for component generation
-- [Razorpay](https://razorpay.com) — payment processing and subscription management
-
-**Tooling**
-- `tsup` — library bundling (ESM + CJS)
-- npm — package distribution
+**Example prompts to try:**
+- `A glassmorphic pricing card with toggle`
+- `Animated sidebar navigation with icons`
+- `Dark mode toggle with smooth transition`
+- `Notification toast with progress bar`
+- `Command palette with fuzzy search`
 
 ---
 
-## Getting Started
+### Option B — Install via NPM
 
-### Installation
+Use the pre-built component library in your project:
 
 ```bash
 npm install llmighty-ui-lib
 ```
-
-### Basic Usage
 
 ```jsx
 import { Button, Card, ProfileCard } from "llmighty-ui-lib";
@@ -73,8 +143,8 @@ import { Button, Card, ProfileCard } from "llmighty-ui-lib";
 function App() {
   return (
     <>
-      <Button variant="primary" size="md">
-        Get Started
+      <Button variant="primary" size="md" icon="🚀">
+        Deploy
       </Button>
 
       <Card
@@ -97,7 +167,7 @@ function App() {
 
 ---
 
-## Components
+## 📦 Components
 
 ### `<Button />`
 
@@ -155,23 +225,26 @@ function App() {
 
 ---
 
-## AI Component Generation
+## 🛠️ Tech Stack
 
-LLMighty UI includes a prompt-based generation layer for users on paid plans. Describe any UI in natural language and receive a complete, copy-paste-ready React component.
+**Frontend**
+- React.js — component development and playground UI
 
-**Example prompt:**
+**Backend**
+- Node.js + Express.js — REST API and AI proxy layer
+- MongoDB — user data, component metadata, and usage logs
 
-```
-"Create a responsive pricing card with 3 tiers, a dark theme, and a highlighted recommended plan."
-```
+**Integrations**
+- [OpenRouter API](https://openrouter.ai) — AI model routing for component generation
+- [Razorpay](https://razorpay.com) — payment processing and subscription management
 
-**Output:** A fully functional React component, rendered live in the playground and exportable to your project.
-
-> AI generation is powered by [OpenRouter](https://openrouter.ai) and requires an active subscription. See [Pricing](#) for plan details.
+**Tooling**
+- `tsup` — library bundling (ESM + CJS)
+- `npm` — package distribution
 
 ---
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```
 llmighty-ui-lib/
@@ -194,7 +267,7 @@ llmighty-ui-lib/
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] CLI tool for scaffolding (à la shadcn/ui)
 - [ ] Visual customization dashboard
@@ -205,7 +278,7 @@ llmighty-ui-lib/
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome and appreciated. To get started:
 
@@ -219,7 +292,7 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting. For major ch
 
 ---
 
-## License
+## 📄 License
 
 Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
 
