@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import { AnimatePresence } from "motion/react";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Stats from "../components/Stats";
-import Features from "../components/Features";
-import Components from "../components/Components";
-import NPMSection from "../components/NPMSection";
-import { CTABanner, Footer } from "../components/CTAAndFooter";
-import Auth from "../components/Auth";
-import { FONTS } from "../constants/tokens";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Navbar        from "../components/Navbar";
+import Hero          from "../components/Hero";
+import Stats         from "../components/Stats";
+import Features      from "../components/Features";
+import Components    from "../components/Components";
+import NPMSection    from "../components/NPMSection";
+import { CTABanner, Footer } from "../components/CTAAndFooter";
+import Auth          from "../components/Auth";
+import { FONTS }     from "../constants/tokens";
 
 export default function HomePage() {
   const [authOpen, setAuthOpen] = useState(false);
-  const {userData} = useSelector((state)=>state.user)
-  const open = () => setAuthOpen(true);
-  const close = () => setAuthOpen(false);
+  const { userData }            = useSelector((state) => state.user);
+  const navigate                = useNavigate();
+
+  const handleCTA = () => {
+    if (userData) {
+      navigate("/generate");
+    } else {
+      setAuthOpen(true);
+    }
+  };
 
   return (
     <div
@@ -29,16 +37,18 @@ export default function HomePage() {
         * { box-sizing: border-box; }
       `}</style>
 
-      <Navbar onLogin={open} />
-      <Hero onLogin={open} />
+      <Navbar onLogin={handleCTA} onLogout={() => {}} />
+      <Hero   onLogin={handleCTA} />
       <Stats />
       <Features />
       <Components />
       <NPMSection />
-      <CTABanner onLogin={open} />
+      <CTABanner onLogin={handleCTA} />
       <Footer />
 
-      <AnimatePresence>{authOpen && <Auth onClose={()=>setAuthOpen(false)} />}</AnimatePresence>
+      <AnimatePresence>
+        {authOpen && <Auth onClose={() => setAuthOpen(false)} />}
+      </AnimatePresence>
     </div>
   );
 }
