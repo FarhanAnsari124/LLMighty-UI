@@ -1,6 +1,6 @@
 {
   "name": "llmighty-ui-lib",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "LLmighty-UI React Component Library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
