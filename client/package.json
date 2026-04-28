@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "AI-powered React component library — prompt to component in seconds",
+  "keywords": ["react", "ui", "components", "ai", "component-library", "design-system"],
+  "homepage": "https://github.com/FarhanAnsari124/LLMighty-UI",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/FarhanAnsari124/LLMighty-UI.git"
+  },
+"license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
